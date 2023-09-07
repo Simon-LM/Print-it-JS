@@ -1,0 +1,70 @@
+
+UBUNTU BUDGIE
+
+
+
+Fonction : max 10 à 20 lignes de code.
+
+
+
+Pseudo-code pour P5 | Carroussel
+
+$TAB: tableau avec les imgaes du Carroussel
+$IndexMax : Nombre de photo
+
+Carroussel() {
+    INDEX = 0
+
+        IF Cliquer sur flèche droite > TRUE
+
+            RIGHT(INDEX)
+
+        IF Cliquer sur flèche Gauche > TRUE
+
+            LEFT(INDEX)
+}
+
+RIGHT(INDEX) {
+
+   IF (INDEX == $IndexMax)
+
+      INEDEX = 0
+
+    ELSE
+
+       INDEX = INDEX + 1
+       Show $TAB[INDEX]
+}
+
+LEFT(INDEX) {
+
+    IF (INDEX == 0)
+
+       INEDEX = $IndexMax
+
+    ELSE
+       INDEX = INDEX - 1
+       Show $TAB[INDEX]
+}
+
+
+
+For : Pour
+While : Tant Que
+
+
+== Est égal à
+
+> Est supérieur à
+
+< Est inférieur à
+
+>= Est supérieur ou égal à
+
+<= Est inférieur ou égal à
+
+!= Est différent de
+
+
+
+Big O
