@@ -53,9 +53,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body {
+/* body {
 
-}
+} */
 section {
 	margin-block: 6em;
 }
@@ -126,6 +126,9 @@ header {
 #banner .arrow {
 	position: absolute;
 }
+#banner .arrow:hover {
+	opacity: 0.75;
+}
 #banner .arrow_left {
 	left: 10px;
 }
@@ -138,6 +141,7 @@ header {
 	bottom: 40px;
 	display: flex;
 }
+
 .dot {
 	margin-inline: 5px;
 	width: 13px;
@@ -147,8 +151,9 @@ header {
 	border-radius: 100%;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
 }
-.dot_selected {
+.dot_selected:hover {
 	background-color: #fff;
+		opacity: 0.5;
 }
 /* Fin du code CSS pour le carousel */
 #banner p {

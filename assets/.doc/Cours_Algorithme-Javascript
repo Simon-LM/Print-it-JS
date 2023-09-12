@@ -9,11 +9,11 @@ Fonction : max 10 à 20 lignes de code.
 
 Pseudo-code pour P5 | Carroussel
 
-$TAB: tableau avec les imgaes du Carroussel
+$TAB: tableau avec les imgaes du Carroussel   >>>>>>>   $TAB > slides
 $IndexMax : Nombre de photo
 
 Carroussel() {
-    INDEX = 0
+    INDEX = 0                                    >>>>>>   INDEX > ImgPosition
 
         IF Cliquer sur flèche droite > TRUE
 

@@ -1,0 +1,12 @@
+{
+    "console-ninja.toolsToEnableSupportAutomaticallyFor": {
+        "live-server-extension": true,
+        "live-preview-extension": true
+    },
+    "console-ninja.featureSet": "Pro",
+    "console-ninja.allowedHosts": [
+        "http://127.0.0.1:5500/",
+        "https://vscode.dev/github/Simon-LM/Print-it-JS/blob/main/assets/script.js#L23"
+    ],
+    "files.autoSave": "off"
+}
