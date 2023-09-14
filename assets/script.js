@@ -33,8 +33,13 @@ const nbr_img_max_tab = slides.length - 1
 console.log('nbr_img_max :', nbr_img_max_tab)
 
 // Initial position of img
-let img_position = 0
+let img_position_initial = 0
+console.log('Position initial de l\'image :', img_position_initial)
+let img_position = img_position_initial
 console.log('Position initial de l\'image :', img_position)
+
+//let img_position = document.querySelector(".dot_selected")
+//console.log('Position initial de l\'image :', img_position)
 
 // Click arrows
 let arrow_left = document.querySelector(".arrow_left");
@@ -47,6 +52,7 @@ function left() {
 	console.log("Gauche")
 	if (img_position == 0) {
 		img_position = nbr_img_max - 1
+		//let img_position = document.querySelector(".dot_selected")
 	}
 	else {
 		img_position = img_position - 1
@@ -140,9 +146,12 @@ let dot_initial = document.getElementById(`dot_01`)
 dot_initial.setAttribute("class", "dot dot_selected");
 console.log(place_of_dots)
 
-// Clicks for dot selection
+///// SELECTION POSITION /////
 for (let pas = 1; pas < dots_nbr; pas++) {
 	let dot_selection = document.querySelector(`#dot_0${pas}`)
+
+
+	/// CLICKON DOT ///
 	dot_selection.addEventListener("click", function (events) {
 		console.log(`click on dot_0${pas}`)
 
