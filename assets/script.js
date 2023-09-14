@@ -58,18 +58,28 @@ function left() {
 	let new_tag_line_thin = document.getElementById("tag_line_thin")		
 	new_tag_line_thin.replaceChildren(slides[img_position].tagLine_thin)
 	
-	// Dot position 
+	// DOT POSITION // 
 	if (img_position == nbr_img_max_tab) {
-		let iii = document.getElementById(`dot_0${1}`)
-		iii.setAttribute("class", "dot")
-		let jjj  = document.getElementById(`dot_0${img_position + 1}`)		
-		jjj.setAttribute("class", "dot dot_selected");
+		// Make all EMPTY
+		let all_dots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < all_dots.length; ++i) {
+			var item = all_dots[i]
+			item.setAttribute("class", "dot")
+		}
+		// Selection of dot | FULLt_dot.setAttribute("class", "dot")
+		let current_dot  = document.getElementById(`dot_0${img_position + 1}`)		
+		current_dot.setAttribute("class", "dot dot_selected");
 	}
 	else {
-		let iii = document.getElementById(`dot_0${img_position + 2}`)
-		iii.setAttribute("class", "dot")
-		let jjj  = document.getElementById(`dot_0${img_position + 1}`)		
-		jjj.setAttribute("class", "dot dot_selected");
+		// Make all EMPTY
+		let all_dots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < all_dots.length; ++i) {
+			var item = all_dots[i]
+			item.setAttribute("class", "dot")
+		}
+		// Selection of dot | FULL
+		let current_dot = document.getElementById(`dot_0${img_position + 1}`)		
+		current_dot.setAttribute("class", "dot dot_selected");
 	}	
 
 	console.log('Position actuelle de l\'image :', img_position)
@@ -89,18 +99,28 @@ function right() {
 	let new_tag_line_thin = document.getElementById("tag_line_thin")		
 	new_tag_line_thin.replaceChildren(slides[img_position].tagLine_thin)
 
-	// Dot position 
+	// DOT POSITION //
 	if (img_position == 0) {
-		let iii = document.getElementById(`dot_0${nbr_img_max_tab + 1}`)
-		iii.setAttribute("class", "dot")
-		let jjj  = document.getElementById(`dot_0${img_position + 1}`)		
-		jjj.setAttribute("class", "dot dot_selected");
+		// Make all EMPTY
+		let all_dots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < all_dots.length; ++i) {
+			var item = all_dots[i]
+			item.setAttribute("class", "dot")
+		}
+		// Selection of dot | FULL
+		let current_dot = document.getElementById(`dot_0${img_position + 1}`)		
+		current_dot.setAttribute("class", "dot dot_selected");
 	}
 	else {
-		let iii = document.getElementById(`dot_0${img_position}`)
-		iii.setAttribute("class", "dot")
-		let jjj  = document.getElementById(`dot_0${img_position + 1}`)		
-		jjj.setAttribute("class", "dot dot_selected");
+		// Make all EMPTY
+		let all_dots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < all_dots.length; ++i) {
+			var item = all_dots[i]
+			item.setAttribute("class", "dot")
+		}
+		// Selection of dot | FULL
+		let current_dot = document.getElementById(`dot_0${img_position + 1}`)		
+		current_dot.setAttribute("class", "dot dot_selected");
 	}	
 	console.log('Position actuelle de l\'image :', img_position)
 }
@@ -118,9 +138,52 @@ for (let pas = 1; pas < dots_nbr ; pas++) {
 // Initial position of dot
 let dot_initial = document.getElementById(`dot_01`)		
 dot_initial.setAttribute("class", "dot dot_selected");
-
 console.log(place_of_dots)
 
+// Clicks for dot selection
+for (let pas = 1; pas < dots_nbr; pas++) {
+	let dot_selection = document.querySelector(`#dot_0${pas}`)
+	dot_selection.addEventListener("click", function (events) {
+		console.log(`click on dot_0${pas}`)
+
+		document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[pas-1].image
+		let new_tag_line_heavy = document.getElementById("tag_line_heavy")		
+		new_tag_line_heavy.replaceChildren(slides[pas-1].tagLine_heavy)
+		let new_tag_line_thin = document.getElementById("tag_line_thin")		
+		new_tag_line_thin.replaceChildren(slides[pas - 1].tagLine_thin)
+		
+		// DOT POSITION //
+		// Make all EMPTY
+		let all_dots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < all_dots.length; ++i) {
+			var item = all_dots[i]
+			item.setAttribute("class", "dot")
+		}
+		// Selection of dot | FULL
+		let click_on_dot = document.getElementById(`dot_0${pas}`)		
+		click_on_dot.setAttribute("class", "dot dot_selected");
+		
+		console.log(dot_selection)
+		console.log('Position actuelle de l\'image :', img_position)
+	})
+}
+
+
+// SCROLL IMG
+/* const scroll_on_dots = document.getElementById("dots");
+
+
+scroll_on_dots.addEventListener("clicks", function (events) {
+	console.log("click on dots");
+});
+
+scroll_on_dots.addEventListener("scroll", function (events) {
+		console.log("scroll");
+});
+ */
 
 
 
+/* document.addEventListener("scrollend", (event) => {
+  output.innerHTML = `Document scrollend event fired!`;
+}); */
