@@ -33,20 +33,63 @@ const nbr_img_max_tab = slides.length - 1
 console.log('nbr_img_max :', nbr_img_max_tab)
 
 // Initial position of img
-let img_position_initial = 0
+let img_position_initial = 3
 console.log('Position initial de l\'image :', img_position_initial)
 let img_position = img_position_initial
-console.log('Position initial de l\'image :', img_position)
+console.log('Position actuelle de l\'image :', img_position)
 
-//let img_position = document.querySelector(".dot_selected")
-//console.log('Position initial de l\'image :', img_position)
+// Nbr dots selectors = Nbr imgs
+let dots_nbr = nbr_img_max + 1
+let place_of_dots = document.getElementById("dots")
+for (let pas = 1; pas < dots_nbr ; pas++) {	
+	console.log("<a class=\"dot_link\"><div id=\"dot_0" + pas + "\" class=\"dot\"></div></a>")
+	let doooot =  document.createElement("a")
+	doooot.innerHTML = `<div id=\"dot_0` + pas + `\" class=\"dot\"></div>`
+	place_of_dots.append(doooot)
+}
+
+// Initial position of dot
+let dot_initial = document.getElementById(`dot_01`)		
+dot_initial.setAttribute("class", "dot dot_selected");
+console.log(place_of_dots)
+
+///// SELECTION POSITION /////
+for (let pas = 1; pas < dots_nbr; pas++) {
+	let dot_selection = document.querySelector(`#dot_0${pas}`)
+
+	/// CLICK ON DOT ///
+	dot_selection.addEventListener("click", function (events) {
+		console.log(`click on dot_0${pas}`)
+
+		img_position = pas - 1
+		
+		document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[pas-1].image
+		let new_tag_line_heavy = document.getElementById("tag_line_heavy")		
+		new_tag_line_heavy.replaceChildren(slides[pas-1].tagLine_heavy)
+		let new_tag_line_thin = document.getElementById("tag_line_thin")		
+		new_tag_line_thin.replaceChildren(slides[pas - 1].tagLine_thin)
+		
+		// DOT POSITION //
+		// Make all EMPTY
+		let all_dots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < all_dots.length; ++i) {
+			var item = all_dots[i]
+			item.setAttribute("class", "dot")
+		}
+		// Selection of dot | FULL
+		let click_on_dot = document.getElementById(`dot_0${pas}`)		
+		click_on_dot.setAttribute("class", "dot dot_selected");
+		
+		console.log(dot_selection)
+		console.log('Position actuelle de l\'image :', img_position)
+	})
+}
 
 // Click arrows
 let arrow_left = document.querySelector(".arrow_left");
 arrow_left.addEventListener("click", left)  
 let arrow_right = document.querySelector(".arrow_right");
 arrow_right.addEventListener("click", right)
-
 
 function left() {
 	console.log("Gauche")
@@ -131,51 +174,25 @@ function right() {
 	console.log('Position actuelle de l\'image :', img_position)
 }
 
-// Nbr dots selectors = Nbr imgs
-let dots_nbr = nbr_img_max + 1
-let place_of_dots = document.getElementById("dots")
-for (let pas = 1; pas < dots_nbr ; pas++) {	
-	console.log("<a class=\"dot_link\"><div id=\"dot_0" + pas + "\" class=\"dot\"></div></a>")
-	let doooot =  document.createElement("a")
-	doooot.innerHTML = `<div id=\"dot_0` + pas + `\" class=\"dot\"></div>`
-	place_of_dots.append(doooot)
-}
-
-// Initial position of dot
-let dot_initial = document.getElementById(`dot_01`)		
-dot_initial.setAttribute("class", "dot dot_selected");
-console.log(place_of_dots)
-
-///// SELECTION POSITION /////
-for (let pas = 1; pas < dots_nbr; pas++) {
-	let dot_selection = document.querySelector(`#dot_0${pas}`)
 
 
-	/// CLICKON DOT ///
-	dot_selection.addEventListener("click", function (events) {
-		console.log(`click on dot_0${pas}`)
 
-		document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[pas-1].image
-		let new_tag_line_heavy = document.getElementById("tag_line_heavy")		
-		new_tag_line_heavy.replaceChildren(slides[pas-1].tagLine_heavy)
-		let new_tag_line_thin = document.getElementById("tag_line_thin")		
-		new_tag_line_thin.replaceChildren(slides[pas - 1].tagLine_thin)
-		
-		// DOT POSITION //
-		// Make all EMPTY
-		let all_dots = document.querySelectorAll("div.dot");
-		for (var i = 0; i < all_dots.length; ++i) {
-			var item = all_dots[i]
-			item.setAttribute("class", "dot")
-		}
-		// Selection of dot | FULL
-		let click_on_dot = document.getElementById(`dot_0${pas}`)		
-		click_on_dot.setAttribute("class", "dot dot_selected");
-		
-		console.log(dot_selection)
-		console.log('Position actuelle de l\'image :', img_position)
-	})
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // SCROLL IMG
