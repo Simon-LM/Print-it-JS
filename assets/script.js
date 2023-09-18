@@ -24,152 +24,152 @@ const slides = [
 
 // Number of images
 slides.length
-const nbr_img_max = slides.length 
-console.log('nbr_img_max :', nbr_img_max)
+const  numberOfImages  = slides.length 
+console.log(' numberOfImages  :',  numberOfImages )
 
 // Number max of images in TABLE 
-const nbr_img_max_tab = slides.length - 1 
-console.log('nbr_img_max :', nbr_img_max_tab)
+const numberOfImagesTable= slides.length - 1 
+console.log(' numberOfImagesTable  :', numberOfImagesTable)
 
 // Initial position of img
-let img_position_initial = 0
-console.log('Position initial de l\'image :', img_position_initial)
-let img_position = img_position_initial
-console.log('Position actuelle de l\'image :', img_position)
+let initialImagePosition = 0
+console.log('Position initial de l\'image :', initialImagePosition)
+let imagePosition = initialImagePosition
+console.log('Position actuelle de l\'image :', imagePosition)
 
 // Nbr dots selectors = Nbr imgs
-let dots_nbr = nbr_img_max + 1
-let place_of_dots = document.getElementById("dots")
-for (let pas = 1; pas < dots_nbr ; pas++) {	
+let numberOfDots =  numberOfImages  + 1
+let placeOfDots = document.getElementById("dots")
+for (let pas = 1; pas < numberOfDots ; pas++) {	
 	console.log("<a class=\"dot_link\"><div id=\"dot_0" + pas + "\" class=\"dot\"></div></a>")
 	let create_a =  document.createElement("a")
 	create_a.innerHTML = `<div id=\"dot_0` + pas + `\" class=\"dot\"></div>`
-	place_of_dots.append(create_a)
+	placeOfDots.append(create_a)
 }
 
 // Initial position of dot
-let dot_initial = document.getElementById(`dot_01`)		
-dot_initial.setAttribute("class", "dot dot_selected");
-console.log(place_of_dots)
+let initialPlaceOfDots = document.getElementById(`dot_01`)		
+initialPlaceOfDots.setAttribute("class", "dot dot_selected");
+console.log(placeOfDots)
 
 // || SELECTION DOT POSITION ||
-for (let pas = 1; pas < dots_nbr; pas++) {
-	let dot_selection = document.querySelector(`#dot_0${pas}`)
+for (let pas = 1; pas < numberOfDots; pas++) {
+	let selectedPoints = document.querySelector(`#dot_0${pas}`)
 
 	// CLICK ON DOT //
-	dot_selection.addEventListener("click", function (events) {
+	selectedPoints.addEventListener("click", function (events) {
 		console.log(`click on dot_0${pas}`)
 
 		// Change image & text
 		document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[pas-1].image
-		let new_tag_line_heavy = document.getElementById("tag_line_heavy")		
-		new_tag_line_heavy.replaceChildren(slides[pas-1].tagLine_heavy)
-		let new_tag_line_thin = document.getElementById("tag_line_thin")		
-		new_tag_line_thin.replaceChildren(slides[pas - 1].tagLine_thin)
+		let newHeavyTagLine = document.getElementById("tag_line_heavy")		
+		newHeavyTagLine.replaceChildren(slides[pas-1].tagLine_heavy)
+		let newThinTagLine = document.getElementById("tag_line_thin")		
+		newThinTagLine.replaceChildren(slides[pas - 1].tagLine_thin)
 		
 		// Make all dots empty
-		let all_dots = document.querySelectorAll("div.dot");
-		for (var i = 0; i < all_dots.length; ++i) {
-			var item = all_dots[i]
+		let selectAllDots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < selectAllDots.length; ++i) {
+			var item = selectAllDots[i]
 			item.setAttribute("class", "dot")
 		}
 		// Make Selection dot full
-		let click_on_dot = document.getElementById(`dot_0${pas}`)		
-		click_on_dot.setAttribute("class", "dot dot_selected");
+		let clickedDot = document.getElementById(`dot_0${pas}`)		
+		clickedDot.setAttribute("class", "dot dot_selected");
 		
 		// Reset new dot positon
-		img_position = pas - 1
+		imagePosition = pas - 1
 
-		console.log(dot_selection)
-		console.log('Position actuelle de l\'image :', img_position)
+		console.log(selectedPoints)
+		console.log('Position actuelle de l\'image :', imagePosition)
 	})
 }
 
 // CLICK ON ARROWS //
-let arrow_left = document.querySelector(".arrow_left");
-arrow_left.addEventListener("click", left)  
-let arrow_right = document.querySelector(".arrow_right");
-arrow_right.addEventListener("click", right)
+let leftArrow = document.querySelector(".arrow_left");
+leftArrow.addEventListener("click", left)  
+let rightArrow = document.querySelector(".arrow_right");
+rightArrow.addEventListener("click", right)
 
 function left() {
 	console.log("Gauche")
-	if (img_position == 0) {
-		img_position = nbr_img_max - 1
+	if (imagePosition == 0) {
+		imagePosition =  numberOfImages  - 1
 	}
 	else {
-		img_position = img_position - 1
+		imagePosition = imagePosition - 1
 	}
 
 	// Change image & text
-	document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[img_position].image
-	let new_tag_line_heavy = document.getElementById("tag_line_heavy")		
-	new_tag_line_heavy.replaceChildren(slides[img_position].tagLine_heavy)
-	let new_tag_line_thin = document.getElementById("tag_line_thin")		
-	new_tag_line_thin.replaceChildren(slides[img_position].tagLine_thin)
+	document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[imagePosition].image
+	let newHeavyTagLine = document.getElementById("tag_line_heavy")		
+	newHeavyTagLine.replaceChildren(slides[imagePosition].tagLine_heavy)
+	let newThinTagLine = document.getElementById("tag_line_thin")		
+	newThinTagLine.replaceChildren(slides[imagePosition].tagLine_thin)
 	
 	// DOT POSITION // 
-	if (img_position == nbr_img_max_tab) {
+	if (imagePosition == numberOfImagesTable) {
 		// Make all dots empty
-		let all_dots = document.querySelectorAll("div.dot");
-		for (var i = 0; i < all_dots.length; ++i) {
-			var item = all_dots[i]
+		let selectAllDots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < selectAllDots.length; ++i) {
+			var item = selectAllDots[i]
 			item.setAttribute("class", "dot")
 		}
 		// Make Selection dot full
-		let current_dot  = document.getElementById(`dot_0${img_position + 1}`)		
-		current_dot.setAttribute("class", "dot dot_selected");
+		let currentDot  = document.getElementById(`dot_0${imagePosition + 1}`)		
+		currentDot.setAttribute("class", "dot dot_selected");
 	}
 	else {
 		// Make all dots empty
-		let all_dots = document.querySelectorAll("div.dot");
-		for (var i = 0; i < all_dots.length; ++i) {
-			var item = all_dots[i]
+		let selectAllDots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < selectAllDots.length; ++i) {
+			var item = selectAllDots[i]
 			item.setAttribute("class", "dot")
 		}
 		// Make Selection dot full
-		let current_dot = document.getElementById(`dot_0${img_position + 1}`)		
-		current_dot.setAttribute("class", "dot dot_selected");
+		let currentDot = document.getElementById(`dot_0${imagePosition + 1}`)		
+		currentDot.setAttribute("class", "dot dot_selected");
 	}
-	console.log('Position actuelle de l\'image :', img_position)
+	console.log('Position actuelle de l\'image :', imagePosition)
 }
 function right() {
 	console.log("Droite")
-	if (img_position == nbr_img_max_tab) {
-		img_position = 0 
+	if (imagePosition == numberOfImagesTable) {
+		imagePosition = 0 
 	}
 	else {
-		img_position = img_position + 1
+		imagePosition = imagePosition + 1
 	}
 
 	// Change image & text
-	document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[img_position].image
-	let new_tag_line_heavy = document.getElementById("tag_line_heavy")		
-	new_tag_line_heavy.replaceChildren(slides[img_position].tagLine_heavy)
-	let new_tag_line_thin = document.getElementById("tag_line_thin")		
-	new_tag_line_thin.replaceChildren(slides[img_position].tagLine_thin)
+	document.getElementById("img_position_slide").src = "./assets/images/slideshow/" + slides[imagePosition].image
+	let newHeavyTagLine = document.getElementById("tag_line_heavy")		
+	newHeavyTagLine.replaceChildren(slides[imagePosition].tagLine_heavy)
+	let newThinTagLine = document.getElementById("tag_line_thin")		
+	newThinTagLine.replaceChildren(slides[imagePosition].tagLine_thin)
 
 	// DOT POSITION //
-	if (img_position == 0) {
+	if (imagePosition == 0) {
 		// Make all dots empty
-		let all_dots = document.querySelectorAll("div.dot");
-		for (var i = 0; i < all_dots.length; ++i) {
-			var item = all_dots[i]
+		let selectAllDots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < selectAllDots.length; ++i) {
+			var item = selectAllDots[i]
 			item.setAttribute("class", "dot")
 		}
 		// Make Selection dot full
-		let current_dot = document.getElementById(`dot_0${img_position + 1}`)		
-		current_dot.setAttribute("class", "dot dot_selected");
+		let currentDot = document.getElementById(`dot_0${imagePosition + 1}`)		
+		currentDot.setAttribute("class", "dot dot_selected");
 	}
 	else {
 		// Make all dots empty
-		let all_dots = document.querySelectorAll("div.dot");
-		for (var i = 0; i < all_dots.length; ++i) {
-			var item = all_dots[i]
+		let selectAllDots = document.querySelectorAll("div.dot");
+		for (var i = 0; i < selectAllDots.length; ++i) {
+			var item = selectAllDots[i]
 			item.setAttribute("class", "dot")
 		}
 		// Make Selection dot full
-		let current_dot = document.getElementById(`dot_0${img_position + 1}`)		
-		current_dot.setAttribute("class", "dot dot_selected");
+		let currentDot = document.getElementById(`dot_0${imagePosition + 1}`)		
+		currentDot.setAttribute("class", "dot dot_selected");
 	}	
-	console.log('Position actuelle de l\'image :', img_position)
+	console.log('Position actuelle de l\'image :', imagePosition)
 }
